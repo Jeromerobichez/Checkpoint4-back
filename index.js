@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const port = 3000 ;
 const connection = require('./db-config');
+const routes = require('./routes/index');
+
+app.use(express.json())
+app.use('/Inbox', routes.Inobx)
 
 app.get('/list', (req, res) => {
    connection.query('SELECT * FROM list', (err, result) => {
